@@ -4,7 +4,7 @@ using GoUsers.Model;
 namespace GoUsers.Tests
 {
   [TestClass]
-  public class PasswordTests
+  public class CriptografiaTests
   {
     [TestMethod]
     public void SenhaDeveEstarCodificadaComSHA1Base64()
