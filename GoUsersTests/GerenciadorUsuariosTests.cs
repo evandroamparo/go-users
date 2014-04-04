@@ -45,7 +45,7 @@ namespace GoUsers.Tests
     }
 
     [TestMethod]
-    [UseReporter(typeof(ApprovalTests.Reporters.DiffReporter))]
+    [UseReporter(typeof(DiffReporter), typeof(FrameworkAssertReporter))]
     public void ArquivoExistenteDeveInicializarListaPreenchida()
     {
       gerenciadorUsuarios = new GerenciadorUsuarios("exemplos/usuarios.txt");
