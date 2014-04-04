@@ -8,38 +8,27 @@ namespace GoUsers.Model
 {
   public class Usuario
   {
-    private string login;
-    private string senha;
-    private bool admin;
     public Usuario(string login, string senha, bool admin = false)
     {
-      this.login = login;
-      this.senha = senha;
-      this.admin = admin;
+      this.Login = login;
+      this.Senha = senha;
+      this.Admin = admin;
     }
 
-    public string Login 
-    { 
-      get
-      {
-        return login;
-      }
-    }
-
-    public bool Admin
+    public string Login { get; set; }
+    public string Senha
     {
-      get
+      set
       {
-        return admin;
+        SenhaCriptografada = new CriptoService().GetHash(value);
       }
     }
+    public bool Admin { get; set; }
+    public string SenhaCriptografada { get; private set; }
 
-    public string SenhaCriptografada
+    public override string ToString()
     {
-      get
-      {
-        return senha;
-      }
+      return string.Format("{0}:{1}", Login, SenhaCriptografada);
     }
   }
 }
