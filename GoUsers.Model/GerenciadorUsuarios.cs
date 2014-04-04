@@ -23,7 +23,8 @@ namespace GoUsers.Model
         foreach (var linha in conteudo)
         {
           var partes = linha.Split(':');
-          var usuario = new Usuario(partes[0], partes[1]);
+          var usuario = new Usuario(partes[0], "");
+          usuario.SenhaCriptografada = partes[1];
           usuarios.Add(usuario);
         }
       }

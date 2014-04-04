@@ -24,7 +24,7 @@ namespace GoUsers.Model
       }
     }
     public bool Admin { get; set; }
-    public string SenhaCriptografada { get; private set; }
+    public string SenhaCriptografada { get; set; }
 
     public override string ToString()
     {
