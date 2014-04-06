@@ -1,2 +1,2 @@
-﻿admin:{SHA}ThmbShxAtJepX80c2JY1FzOEmUk=
-123456:{SHA}fEqNCco3Yq9h5ZUglD3CZJT4lBs=
+﻿admin:ThmbShxAtJepX80c2JY1FzOEmUk=
+123456:fEqNCco3Yq9h5ZUglD3CZJT4lBs=

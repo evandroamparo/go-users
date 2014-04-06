@@ -12,14 +12,18 @@ namespace GoUsers.Tests
   {
     private Usuario usuario;
     private GerenciadorUsuarios gerenciadorUsuarios;
-    private string arquivo;
+    private string arquivoTeste;
 
     [TestInitialize]
     public void Setup()
     {
       usuario = new Usuario("admin", "senha", true);
-      arquivo = "usuarios.txt";
-      gerenciadorUsuarios = new GerenciadorUsuarios(arquivo);
+      arquivoTeste = "usuarios.txt";
+      if (File.Exists(arquivoTeste))
+      {
+        File.Delete(arquivoTeste);
+      }
+      gerenciadorUsuarios = new GerenciadorUsuarios(arquivoTeste);
     }
 
     [TestMethod]
@@ -53,10 +57,23 @@ namespace GoUsers.Tests
     }
 
     [TestMethod]
-    public void UsuariosDevemSerPersistidosNoArquivo()
+    [UseReporter(typeof(DiffReporter))]
+    public void NovosUsuariosDevemSerPersistidosNoArquivo()
     {
-      gerenciadorUsuarios.AdicionarUsuario(usuario);
-      //gerenciadorUsuarios.Salvar();
+      var novoUsuario = new Usuario("NovoUsuario", "123456");
+      gerenciadorUsuarios.AdicionarUsuario(novoUsuario);
+      gerenciadorUsuarios.Salvar();
+      Approvals.Verify(gerenciadorUsuarios);
+    }
+
+    [TestMethod]
+    public void UsuariosExcluidosDevemSerExcluidosDoArquivo()
+    {
+      gerenciadorUsuarios.ExcluirUsuario(usuario);
+      gerenciadorUsuarios.Salvar();
+      gerenciadorUsuarios = new GerenciadorUsuarios(arquivoTeste);
+      Usuario usuarioRecuperado = gerenciadorUsuarios.RecuperarUsuario("admin");
+      Assert.IsNull(usuarioRecuperado);
     }
   }
 }

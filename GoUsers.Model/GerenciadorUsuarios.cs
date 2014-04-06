@@ -57,5 +57,15 @@ namespace GoUsers.Model
       }
       return builder.ToString();
     }
+
+    public void Salvar()
+    {
+      File.WriteAllText(arquivo, ToString());
+    }
+
+    public Usuario RecuperarUsuario(string login)
+    {
+      return usuarios.FirstOrDefault(u => u.Login == login);
+    }
   }
 }

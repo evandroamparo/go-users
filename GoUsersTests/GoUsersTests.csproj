@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="exemplos\usuarios.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
