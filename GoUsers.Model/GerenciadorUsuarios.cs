@@ -32,6 +32,10 @@ namespace GoUsers.Model
 
     public void AdicionarUsuario(Usuario usuario)
     {
+      if (RecuperarUsuario(usuario.Login) != null)
+      {
+        throw new UsuarioDuplicadoException();
+      }
       usuarios.Add(usuario);
     }
 

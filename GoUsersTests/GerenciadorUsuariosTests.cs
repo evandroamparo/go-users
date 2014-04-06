@@ -27,6 +27,14 @@ namespace GoUsers.Tests
     }
 
     [TestMethod]
+    [ExpectedException(typeof(UsuarioDuplicadoException))]
+    public void LoginNaoPodeSerDuplicado()
+    {
+      gerenciadorUsuarios.AdicionarUsuario(usuario);
+      gerenciadorUsuarios.AdicionarUsuario(usuario);
+    }
+
+    [TestMethod]
     public void UsuarioAdicionadoDeveConstarNaLista()
     {
       gerenciadorUsuarios.AdicionarUsuario(usuario);
