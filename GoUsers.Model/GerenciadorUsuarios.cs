@@ -69,7 +69,7 @@ namespace GoUsers.Model
 
     public Usuario RecuperarUsuario(string login)
     {
-      return usuarios.FirstOrDefault(u => u.Login == login);
+      return usuarios.FirstOrDefault(u => u.Login.Trim().ToUpper() == login.Trim().ToUpper());
     }
   }
 }

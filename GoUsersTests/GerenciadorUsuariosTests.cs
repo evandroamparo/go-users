@@ -31,7 +31,8 @@ namespace GoUsers.Tests
     public void LoginNaoPodeSerDuplicado()
     {
       gerenciadorUsuarios.AdicionarUsuario(usuario);
-      gerenciadorUsuarios.AdicionarUsuario(usuario);
+      var usuarioDuplicado = new Usuario("ADMIN", "teste");
+      gerenciadorUsuarios.AdicionarUsuario(usuarioDuplicado);
     }
 
     [TestMethod]
