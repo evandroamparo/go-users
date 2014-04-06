@@ -69,6 +69,7 @@ namespace GoUsers.Tests
     [TestMethod]
     public void UsuariosExcluidosDevemSerExcluidosDoArquivo()
     {
+      gerenciadorUsuarios.AdicionarUsuario(usuario);
       gerenciadorUsuarios.ExcluirUsuario(usuario);
       gerenciadorUsuarios.Salvar();
       gerenciadorUsuarios = new GerenciadorUsuarios(arquivoTeste);
