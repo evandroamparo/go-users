@@ -37,6 +37,7 @@ namespace GoUsers.Model
         throw new UsuarioDuplicadoException();
       }
       usuarios.Add(usuario);
+      Salvar();
     }
 
     public ReadOnlyCollection<Usuario> Usuarios
@@ -49,7 +50,8 @@ namespace GoUsers.Model
 
     public void ExcluirUsuario(Usuario usuario)
     {
-      usuarios.Remove(usuario);
+      if (usuarios.Remove(usuario))
+        Salvar();
     }
 
     public override string ToString()
@@ -62,7 +64,7 @@ namespace GoUsers.Model
       return builder.ToString();
     }
 
-    public void Salvar()
+    private void Salvar()
     {
       File.WriteAllText(arquivo, ToString());
     }

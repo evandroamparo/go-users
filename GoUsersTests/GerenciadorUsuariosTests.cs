@@ -71,7 +71,7 @@ namespace GoUsers.Tests
     {
       var novoUsuario = new Usuario("NovoUsuario", "123456");
       gerenciadorUsuarios.AdicionarUsuario(novoUsuario);
-      gerenciadorUsuarios.Salvar();
+      gerenciadorUsuarios = new GerenciadorUsuarios(arquivoTeste);
       Approvals.Verify(gerenciadorUsuarios);
     }
 
@@ -80,7 +80,6 @@ namespace GoUsers.Tests
     {
       gerenciadorUsuarios.AdicionarUsuario(usuario);
       gerenciadorUsuarios.ExcluirUsuario(usuario);
-      gerenciadorUsuarios.Salvar();
       gerenciadorUsuarios = new GerenciadorUsuarios(arquivoTeste);
       Usuario usuarioRecuperado = gerenciadorUsuarios.RecuperarUsuario("admin");
       Assert.IsNull(usuarioRecuperado);
